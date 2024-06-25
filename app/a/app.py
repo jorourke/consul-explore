@@ -1,6 +1,6 @@
+import consul
 import requests
 from flask import Flask
-import consul
 
 app = Flask(__name__)
 consul_client = consul.Consul()
@@ -19,4 +19,4 @@ def hello():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=8080)
