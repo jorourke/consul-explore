@@ -53,6 +53,7 @@ spec:
       serviceAccountName: service-a
       containers:
         - name: service-a
+          imagePullPolicy: Always
           image: jorourke/python-flask:latest
           command: [ "python", "./a/app.py" ]
           ports:

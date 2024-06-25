@@ -53,7 +53,15 @@ spec:
       serviceAccountName: service-b
       containers:
         - name: service-b
+          imagePullPolicy: Always
           image: jorourke/python-flask:latest
           command: [ "python", "./b/app.py"]
           ports:
             - containerPort: 8081
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+      volumes:
+        - name: config
+          configMap:
+            name: names-config
