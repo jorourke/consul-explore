@@ -4,12 +4,16 @@ import random
 import consul
 from flask import Flask
 
+from src.common.util import setup_logging
+
 app = Flask(__name__)
 consul_client = consul.Consul(
     host="dcx-consul-cluster-dev.consul.79ccb6be-44be-4241-a037-e96e565a87ac.aws.hashicorp.cloud",
     port=443,
     scheme="https"
 )
+
+setup_logging(app)
 
 
 @app.route('/name')

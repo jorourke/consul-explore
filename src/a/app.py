@@ -2,12 +2,16 @@ import consul
 import requests
 from flask import Flask
 
+from src.common.util import setup_logging
+
 app = Flask(__name__)
 consul_client = consul.Consul(
     host="dcx-consul-cluster-dev.consul.79ccb6be-44be-4241-a037-e96e565a87ac.aws.hashicorp.cloud",
     port=443,
     scheme="https"
 )
+
+setup_logging(app)
 
 
 @app.route('/')
@@ -24,7 +28,7 @@ def hello():
             response = requests.get(f'http://service-b-service:8081/name')
             name = response.text
         except requests.RequestException as e:
-            print(f"Error connecting to Service B: {e}", flush=True)
+            app.logger.error(f"Error connecting to Service B: {e}")
             raise e
     else:
         name = "Error: Service B not found in Consul"
