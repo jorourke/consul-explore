@@ -17,7 +17,6 @@ consul_client = consul.Consul(
 def hello():
     # Get Service B address from Consul
     logging.info("Entering hello")
-    return {"message": "Hello, world!"}
     index, services = consul_client.catalog.service('service-b')
     if services:
         service_b = services[0]

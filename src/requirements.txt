@@ -1,2 +1,3 @@
 fastapi
 python-consul
+python-json-logger
