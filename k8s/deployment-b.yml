@@ -55,7 +55,7 @@ spec:
         - name: service-b
           imagePullPolicy: Always
           image: jorourke/python-flask:latest
-          command: [ "python", "-m", "src.b.app" ]
+          command: [ "uvicorn", "src.b.app:app", "--host", "0.0.0.0", "--port", "8081" ]
           ports:
             - containerPort: 8081
           volumeMounts:
