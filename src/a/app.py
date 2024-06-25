@@ -37,7 +37,5 @@ def hello():
 
 
 if __name__ == '__main__':
-    print(f"Service A is running on port 8080")
-    details = consul_client.catalog.service('service-b')
-    print(f"details: {details}")
-    app.run(debug=True, port=8080, host='0.0.0.0')
+    app.logger.info(f"Starting service on {8080}")
+    app.run(port=8080, host='0.0.0.0')

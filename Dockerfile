@@ -3,11 +3,10 @@ FROM  python:3.12-alpine
 
 WORKDIR /app
 
-COPY requirements.txt /app
+COPY src/requirements.txt /app
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip3 install -r requirements.txt
 
-COPY . /app
+COPY ./src /app/src
 
-ENTRYPOINT ["python3"]
-CMD [ "./a/app.py" ]
+CMD [ "/bin/sh" ]

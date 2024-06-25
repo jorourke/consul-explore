@@ -55,6 +55,6 @@ spec:
         - name: service-a
           imagePullPolicy: Always
           image: jorourke/python-flask:latest
-          command: [ "python", "./a/app.py" ]
+          command: [ "python", "-m", "src.a.app" ]
           ports:
             - containerPort: 8080

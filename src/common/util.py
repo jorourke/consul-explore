@@ -1,10 +1,10 @@
 import logging
+import sys
 
 
 def setup_logging(app):
-    app.logger.setLevel(logging.INFO)
     # Log to stdout
-    handler = logging.StreamHandler()
+    handler = logging.StreamHandler(sys.stdout)
     handler.setLevel(logging.INFO)
     # Create formatter and add it to the handler
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
