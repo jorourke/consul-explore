@@ -8,6 +8,7 @@ requests = "*"
 flask = "*"
 python-consul = "*"
 fastapi = "*"
+python-json-logger = "*"
 
 [dev-packages]
 

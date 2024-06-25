@@ -1,6 +1,7 @@
 import json
 import logging
 import random
+import sys
 
 import consul
 import uvicorn
@@ -13,19 +14,14 @@ consul_client = consul.Consul(
     scheme="https"
 )
 
-logger = logging.getLogger(__name__)
 
 
 @app.get('/name')
 def get_name():
-    logger.info("Doing get name")
+    logging.info("Doing get name")
     # Get names from Consul KV store
     # _, names_data = consul_client.kv.get('names-config/names')
     with open('/app/config/names', 'r') as f:
         names = json.load(f)
 
     return random.choice(names)
-
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8081)
