@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a
+  namespace: test-consul-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-a
+  template:
+    metadata:
+      labels:
+        app: service-a
+      annotations:
+        consul.hashicorp.com/connect-service: 'service-a'
+    spec:
+      containers:
+        - name: service-a
+          image: your-service-a-image:tag
+          ports:
+            - containerPort: 8080

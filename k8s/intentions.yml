@@ -1,0 +1,11 @@
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: service-a-to-service-b
+  namespace: test-consul-namespace
+spec:
+  destination:
+    name: service-b
+  sources:
+    - name: service-a
+      action: allow

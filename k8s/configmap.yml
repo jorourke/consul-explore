@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: names-config
+  namespace: test-consul-namespace
+data:
+  names: |
+    ["Alice", "Bob", "Charlie", "David"]
